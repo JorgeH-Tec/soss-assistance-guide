@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="description"
+        content="SOSS Ceilândia - Guia de orientação para serviços sociais na Ceilândia. Saiba quais documentos levar antes de sair de casa." />
+    <meta name="theme-color" content="#0f4c81" />
+    <title>SOSS Ceilândia</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css"> 
+
+</head>
+
+<body>
+
+    <!-- header -->
+    <header class="header" role="banner">
+        <div class="header-brand">
+            <div class="header-logo" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#0f4c81" stroke-width="2.2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+            </div>
+            <div class="header-title">
+                SOSS Ceilândia
+                <span>Orientação em Serviços Sociais</span>
+            </div>
+        </div>
+        <button class="btn-back" id="btnBack" aria-label="Voltar para a tela inicial">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <polyline points="15 18 9 12 15 6" />
+            </svg>
+            Voltar
+        </button>
+    </header>
+
+    <!-- Home  -->
+    <main id="screenHome" class="screen active" role="main" aria-label="Tela inicial">
+
+        <section class="home-hero" aria-labelledby="heroTitle">
+            <div class="hero-eyebrow" role="status">
+                <span aria-hidden="true"></span>
+                Guia atualizado
+            </div>
+            <h1 id="heroTitle">Evite perder a viagem ao serviço social</h1>
+            <p>Confira os documentos antes de sair. Selecione o que você precisa:</p>
+        </section>
+
+        <h2 class="section-label" id="labelAssistencia">Assistência Social – CRAS</h2>
+        <p style="padding: 0 20px 10px; font-size:.82rem; color: var(--muted); line-height:1.5;">
+            Para <strong>benefícios, cadastros e apoio financeiro</strong> à família (Bolsa Família, Cesta Básica,
+            Cadastro Único).
+        </p>
+
+        <div class="cards-container" role="list" aria-labelledby="labelAssistencia">
+            <!-- Cards CRAS injetados por JS -->
+        </div>
+
+        <h2 class="section-label" id="labelProtecao" style="margin-top:8px">Proteção Especial – CREAS</h2>
+        <p style="padding: 0 20px 10px; font-size:.82rem; color: var(--muted); line-height:1.5;">
+            Para situações de <strong>violência, abuso, ameaça ou violação de direitos</strong>. Atendimento sigiloso.
+        </p>
+
+        <div class="cards-container creas-cards" role="list" aria-labelledby="labelProtecao">
+            <!-- Cards CREAS injetados por JS -->
+        </div>
+
+        <div class="info-box" role="note" aria-label="Dica importante">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+            <p><strong>Dica:</strong> Sempre ligue antes de ir. Serviços podem suspender o atendimento sem aviso. Os
+                telefones estão em cada local.</p>
+        </div>
+
+        <footer class="footer" role="contentinfo">
+            <strong>⚠️ Guia acadêmico informativo</strong><br />
+            Este site <strong>não tem vínculo oficial</strong> com o Governo do DF ou qualquer órgão público.<br />
+            Informações sujeitas a alteração. Confirme sempre com o serviço.
+        </footer>
+
+    </main>
+
+    <!-- detalhes -->
+    <div id="screenDetail" class="screen" role="main" aria-label="Detalhes do serviço" aria-live="polite">
+        <!-- Conteúdo injetado por JS -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
