@@ -39,7 +39,7 @@ Por ser uma aplicação estática, não é necessário instalar dependências ou
 ## 🌍 Link do Projeto Operacional
 
 O deploy do sistema foi realizado de forma automatizada e gratuita através do:
-🔗 [CLIQUE AQUI PARA ACESSAR O SOSS]()
+🔗 [CLIQUE AQUI PARA ACESSAR O SOSS](https://jorgeh-tec.github.io/soss-assistance-guide/)
 
 ## 👥 Autores (Projeto de Extensão)
 
