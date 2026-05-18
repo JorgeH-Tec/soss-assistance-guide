@@ -45,9 +45,13 @@ O deploy do sistema foi realizado de forma automatizada e gratuita através do:
 
 Trabalho desenvolvido como Projeto de Extensão no curso de Análise e Desenvolvimento de Sistemas (ADS).
 
-* **Jorge Henrique Paiva Alves** - GitHub: [@JorgeH-Tec](https://github.com/JorgeH-Tec)
+* **Jorge Henrique Paiva Alves** - GitHub: [@JorgeH-Tec](https://github.com/JorgeH-Tec) (Lider do projeto)
 * ...
 
 ---
 
-<center>*Nota: Este é um projeto puramente académico e informativo, sem vínculo oficial com a administração do CREAS/CRAS ou com o Governo do Distrito Federal.*
+<div align="center">
+   <h5>
+      Nota: Este é um projeto puramente académico e informativo, sem vínculo oficial com a administração do CREAS/CRAS ou com o Governo do Distrito Federal.
+   </h5>
+</div>
