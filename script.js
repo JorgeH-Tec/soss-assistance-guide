@@ -80,18 +80,15 @@ const ICONS = {
 };
 
 // HOME CARDS
-function buildHomeCards() {
-    const crasContainer = document.querySelector('.cards-container');
-    const creasContainer = document.querySelector('.creas-cards');
+function buildHomeCards(type) {
+  const container = document.getElementById('serviceCards');
+  container.replaceChildren();
 
-    SERVICES.forEach(svc => {
-        const isCras = svc.type === 'cras';
-        const container = isCras ? crasContainer : creasContainer;
-
-        const card = document.createElement('article');
+  SERVICES.filter(svc => type === 'all' || svc.type === type).forEach(svc => {
+    const isCras = svc.type === 'cras';
+    const card = document.createElement('button');
+    card.type = 'button';
         card.className = `service-card ${svc.type}`;
-        card.setAttribute('role', 'listitem');
-        card.setAttribute('tabindex', '0');
         card.setAttribute('aria-label', `${svc.name}: ${svc.shortDesc}`);
 
         card.innerHTML = `
@@ -111,8 +108,6 @@ function buildHomeCards() {
 
         const navigate = () => showDetail(svc.id);
         card.addEventListener('click', navigate);
-        card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigate(); } });
-
         container.appendChild(card);
     });
 }
@@ -147,7 +142,7 @@ function buildDetail(svc) {
           <div class="check-text">
             <div class="check-name">${doc.name}</div>
             <div class="check-hint">${doc.hint}</div>
-            ${doc.alert ? `<span class="alert-badge">${ICONS.alert} Atenção — leve este!</span>` : ''}
+            ${doc.alert ? `<span class="alert-badge">${ICONS.alert} Veja esta observação</span>` : ''}
           </div>
         </div>
       `).join('');
@@ -156,7 +151,7 @@ function buildDetail(svc) {
     detail.innerHTML = `
         <section class="detail-hero ${isCras ? 'cras-bg' : 'creas-bg'}" aria-labelledby="detailTitle">
           <span class="detail-tag">${svc.type.toUpperCase()}</span>
-          <h2 id="detailTitle">${svc.name}</h2>
+          <h2 id="detailTitle" tabindex="-1">${svc.name}</h2>
           <p>${svc.descFull}</p>
         </section>
 
@@ -269,32 +264,79 @@ function buildDetail(svc) {
 }
 
 // NAVEGAÇÃO
+let selectedType = 'all';
+let activeScreen = 'screenHome';
+
+function activateScreen(screenId) {
+  document.querySelectorAll('.screen').forEach(screen => {
+    const isActive = screen.id === screenId;
+    screen.classList.toggle('active', isActive);
+    screen.hidden = !isActive;
+  });
+  activeScreen = screenId;
+  document.getElementById('btnBack').hidden = screenId === 'screenHome';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const heading = document.querySelector(`#${screenId} h1, #${screenId} h2`);
+  heading?.focus({ preventScroll: true });
+}
+
+function showServices(type) {
+  selectedType = type;
+  buildHomeCards(type);
+
+  const descriptions = {
+    cras: {
+      kicker: 'Benefícios e alimentação',
+      title: 'Atendimento para sua família',
+      description: 'Veja o serviço que pode orientar sobre benefícios, Cadastro Único e alimentação.'
+    },
+    creas: {
+      kicker: 'Violência ou direitos',
+      title: 'Você pode buscar atendimento',
+      description: 'O atendimento do CREAS é especializado e pode orientar mesmo que você ainda não tenha boletim de ocorrência ou laudo.'
+    },
+    all: {
+      kicker: 'Opções de atendimento',
+      title: 'Veja os serviços disponíveis',
+      description: 'Abra um serviço para conferir endereço, contato, horário e documentos.'
+    }
+  };
+  const copy = descriptions[type];
+  document.getElementById('servicesKicker').textContent = copy.kicker;
+  document.getElementById('servicesTitle').textContent = copy.title;
+  document.getElementById('servicesDescription').textContent = copy.description;
+  document.title = 'Serviços disponíveis – SOSS Ceilândia';
+  activateScreen('screenServices');
+}
+
 function showDetail(serviceId) {
     const svc = SERVICES.find(s => s.id === serviceId);
     if (!svc) return;
 
     buildDetail(svc);
 
-    document.getElementById('screenHome').classList.remove('active');
-    document.getElementById('screenDetail').classList.add('active');
-    document.getElementById('btnBack').style.display = 'flex';
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    // Atualiza pagina
+    activateScreen('screenDetail');
     document.title = `${svc.name} – SOSS Ceilândia`;
 }
 
 function showHome() {
-    document.getElementById('screenDetail').classList.remove('active');
-    document.getElementById('screenHome').classList.add('active');
-    document.getElementById('btnBack').style.display = 'none';
+    activateScreen('screenHome');
     document.title = 'SOSS Ceilândia';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function goBack() {
+    if (activeScreen === 'screenDetail') {
+      showServices(selectedType);
+      return;
+    }
+    showHome();
 }
 
 // INICIA
 document.addEventListener('DOMContentLoaded', () => {
-    buildHomeCards();
-    document.getElementById('btnBack').addEventListener('click', showHome);
+    document.querySelectorAll('[data-service-type]').forEach(choice => {
+      choice.addEventListener('click', () => showServices(choice.dataset.serviceType));
+    });
+    document.getElementById('btnBack').addEventListener('click', goBack);
 });

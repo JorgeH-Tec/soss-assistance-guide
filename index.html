@@ -3,22 +3,19 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
         content="SOSS Ceilândia - Guia de orientação para serviços sociais na Ceilândia. Saiba quais documentos levar antes de sair de casa." />
     <meta name="theme-color" content="#0f4c81" />
     <title>SOSS Ceilândia</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
+
+    <a class="skip-link" href="#screenHome">Pular para o conteúdo</a>
 
     <!-- header -->
     <header class="header" role="banner">
@@ -35,7 +32,7 @@
                 <span>Orientação em Serviços Sociais</span>
             </div>
         </div>
-        <button class="btn-back" id="btnBack" aria-label="Voltar para a tela inicial">
+        <button class="btn-back" id="btnBack" type="button" hidden>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                 stroke-linejoin="round" aria-hidden="true">
                 <polyline points="15 18 9 12 15 6" />
@@ -44,60 +41,70 @@
         </button>
     </header>
 
-    <!-- Home  -->
-    <main id="screenHome" class="screen active" role="main" aria-label="Tela inicial">
-
-        <section class="home-hero" aria-labelledby="heroTitle">
-            <div class="hero-eyebrow" role="status">
-                <span aria-hidden="true"></span>
-                Guia atualizado
+    <main id="appMain">
+        <section id="screenHome" class="screen active" aria-labelledby="heroTitle">
+            <div class="home-hero">
+                <p class="hero-eyebrow">Guia de serviços em Ceilândia</p>
+                <h1 id="heroTitle" tabindex="-1">O que você precisa resolver?</h1>
+                <p>Escolha um assunto para encontrar um serviço e se preparar para o atendimento.</p>
+                <p class="privacy-note">Sem cadastro. Sua escolha não é salva.</p>
             </div>
-            <h1 id="heroTitle">Evite perder a viagem ao serviço social</h1>
-            <p>Confira os documentos antes de sair. Selecione o que você precisa:</p>
+
+            <div class="choice-list" aria-label="Escolha o assunto">
+                <button class="choice-card choice-cras" type="button" data-service-type="cras">
+                    <span class="choice-marker" aria-hidden="true">01</span>
+                    <span class="choice-copy">
+                        <strong>Benefícios e alimentação</strong>
+                        <span>Cadastro Único, Bolsa Família, cesta básica e apoio à família.</span>
+                    </span>
+                    <span class="choice-arrow" aria-hidden="true">›</span>
+                </button>
+                <button class="choice-card choice-creas" type="button" data-service-type="creas">
+                    <span class="choice-marker" aria-hidden="true">02</span>
+                    <span class="choice-copy">
+                        <strong>Violência ou direitos</strong>
+                        <span>Atendimento para situações de violência, ameaça ou violação de direitos.</span>
+                    </span>
+                    <span class="choice-arrow" aria-hidden="true">›</span>
+                </button>
+                <button class="choice-card choice-all" type="button" data-service-type="all">
+                    <span class="choice-marker" aria-hidden="true">03</span>
+                    <span class="choice-copy">
+                        <strong>Não sei por onde começar</strong>
+                        <span>Veja as opções disponíveis e escolha com calma.</span>
+                    </span>
+                    <span class="choice-arrow" aria-hidden="true">›</span>
+                </button>
+            </div>
+
+            <aside class="urgent-note" aria-label="Emergência">
+                <strong>Está em perigo agora?</strong>
+                <span>Polícia: <a href="tel:190">ligue 190</a>. Urgência médica: <a href="tel:192">ligue 192</a>.</span>
+            </aside>
         </section>
 
-        <h2 class="section-label" id="labelAssistencia">Assistência Social – CRAS</h2>
-        <p style="padding: 0 20px 10px; font-size:.82rem; color: var(--muted); line-height:1.5;">
-            Para <strong>benefícios, cadastros e apoio financeiro</strong> à família (Bolsa Família, Cesta Básica,
-            Cadastro Único).
-        </p>
+        <section id="screenServices" class="screen" aria-labelledby="servicesTitle" hidden>
+            <div class="screen-intro">
+                <p class="hero-eyebrow" id="servicesKicker">Serviço indicado</p>
+                <h1 id="servicesTitle" tabindex="-1">Encontre atendimento</h1>
+                <p id="servicesDescription">Confira as opções e abra uma para ver endereço, contato e documentos.</p>
+            </div>
+            <div class="cards-container" id="serviceCards" aria-label="Serviços disponíveis"></div>
+            <div class="info-box" role="note">
+                <strong>Antes de sair</strong>
+                <p>Ligue para confirmar o atendimento, o horário e os documentos. As informações podem mudar.</p>
+            </div>
+        </section>
 
-        <div class="cards-container" role="list" aria-labelledby="labelAssistencia">
-            <!-- Cards CRAS injetados por JS -->
-        </div>
-
-        <h2 class="section-label" id="labelProtecao" style="margin-top:8px">Proteção Especial – CREAS</h2>
-        <p style="padding: 0 20px 10px; font-size:.82rem; color: var(--muted); line-height:1.5;">
-            Para situações de <strong>violência, abuso, ameaça ou violação de direitos</strong>. Atendimento sigiloso.
-        </p>
-
-        <div class="cards-container creas-cards" role="list" aria-labelledby="labelProtecao">
-            <!-- Cards CREAS injetados por JS -->
-        </div>
-
-        <div class="info-box" role="note" aria-label="Dica importante">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="12" y1="8" x2="12" y2="12" />
-                <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>
-            <p><strong>Dica:</strong> Sempre ligue antes de ir. Serviços podem suspender o atendimento sem aviso. Os
-                telefones estão em cada local.</p>
-        </div>
+        <section id="screenDetail" class="screen" aria-label="Detalhes do serviço" hidden>
+            <!-- Conteúdo injetado por JavaScript -->
+        </section>
 
         <footer class="footer" role="contentinfo">
-            <strong>⚠️ Guia acadêmico informativo</strong><br />
-            Este site <strong>não tem vínculo oficial</strong> com o Governo do DF ou qualquer órgão público.<br />
-            Informações sujeitas a alteração. Confirme sempre com o serviço.
+            <strong>Guia informativo, sem vínculo oficial com o Governo do DF.</strong>
+            <span>Confirme endereço, telefone, horário e documentos diretamente com o serviço.</span>
         </footer>
-
     </main>
-
-    <!-- detalhes -->
-    <div id="screenDetail" class="screen" role="main" aria-label="Detalhes do serviço" aria-live="polite">
-        <!-- Conteúdo injetado por JS -->
-    </div>
 
     <script src="script.js"></script>
 </body>
