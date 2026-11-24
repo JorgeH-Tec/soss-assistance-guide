@@ -13,19 +13,21 @@ A desinformação operacional e a complexidade burocrática geram barreiras crí
 
 ## 💡 A Solução
 
-O **SOSS** foi desenvolvido para mitigar este gargalo de triagem. Trata-se de uma aplicação web mobile-first, ultra leve e estática (100% *client-side*). O sistema funciona sem a necessidade de um banco de dados pesado, garantindo carregamento quase instantâneo mesmo em conexões de dados móveis (3G/4G) instáveis.
+O **SOSS** foi desenvolvido para mitigar este gargalo de triagem. Trata-se de uma aplicação web mobile-first, leve e estática (100% *client-side*), sem cadastro ou armazenamento das escolhas da pessoa. Não requer banco de dados nem dependências de terceiros para funcionar.
 
 ### Principais Funcionalidades:
-- **Triagem Intuitiva:** Separação clara de serviços (alimentação, benefícios, denúncias) sem termos técnicos complexos.
-- **Checklist Interativo de Documentos:** Listagem visual com foco prioritário nos documentos mais esquecidos (comprovante de residência e laudos).
-- **Geolocalização por Marcos Populares:** Endereços associados aos pontos de referência mais conhecidos da Ceilândia.
+- **Triagem por necessidade:** A tela inicial oferece caminhos para benefícios e alimentação, situações de violência ou direitos, ou ajuda para escolher um serviço.
+- **Informações do atendimento:** Endereço, pontos de referência, horário, telefone e acesso ao Google Maps para os serviços cadastrados.
+- **Checklist interativo:** A pessoa pode marcar os documentos que já tem e acompanhar a conferência. Observações distinguem itens opcionais de exigências.
+- **Acesso rápido a emergências:** Links para ligar para 190 (Polícia) e 192 (urgência médica) em celulares compatíveis.
+- **Acessibilidade:** Navegação por teclado, foco visível, atalho para pular ao conteúdo, zoom móvel liberado e respeito à preferência por movimento reduzido.
 
 ## 🚀 Tecnologias Utilizadas
 
 O projeto preza pela máxima performance e custo zero de infraestrutura:
 * **HTML5** (Estruturação semântica)
-* **CSS3 / Tailwind CSS** (Estilização responsiva e focada em acessibilidade móvel)
-* **JavaScript (ES6+)** (Lógica de filtragem e manipulação de dados via JSON estático)
+* **CSS3** (Estilização responsiva, sem framework externo)
+* **JavaScript (ES6+)** (Navegação entre telas, filtragem de serviços e checklist com dados estáticos no próprio código)
 
 ## 🛠️ Como Executar o Projeto
 
@@ -34,7 +36,8 @@ Por ser uma aplicação estática, não é necessário instalar dependências ou
 1. Clone o repositório:
    ```bash
    git clone https://github.com/JorgeH-Tec/soss-assistance-guide.git
-2. Abra o ficheiro `index.html` diretamente no seu navegador ou utilize a extensão *Live Server* no seu editor de código.
+   ```
+2. Abra o ficheiro `index.html` diretamente no navegador ou utilize a extensão *Live Server* no editor.
 
 ## 🌍 Link do Projeto Operacional
 
